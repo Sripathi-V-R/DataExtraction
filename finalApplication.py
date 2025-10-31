@@ -175,7 +175,9 @@ PROMPT_SITE = """
 
 # ========== STREAMLIT UI ==========
 st.set_page_config(page_title="PARK Extractor", page_icon="🧠", layout="wide")
+
 st.title("📄 PARK Appraisal Report Extractor")
+st.caption("Specialized for **Form 1004** appraisal document extraction")
 
 tab1, tab2 = st.tabs(["1️⃣ Extract JSON from PDF", "2️⃣ Fill Excel from JSON"])
 
@@ -385,6 +387,7 @@ with tab2:
             st.success(f"✅ Added Property — {filled} fields populated!")
             with open(out_xlsx, "rb") as f:
                 st.download_button("⬇️ Download Updated Excel", f, file_name="1004_updated.xlsx")
+
 
 
 
