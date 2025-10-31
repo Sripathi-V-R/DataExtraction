@@ -174,7 +174,7 @@ PROMPT_SITE = """
 """
 
 # ========== STREAMLIT UI ==========
-st.title("📄 Form 1004 Vision Extractor + Excel Populator")
+st.title("📄 Park Appraisal Report Extractor")
 
 tab1, tab2 = st.tabs(["1️⃣ Extract JSON from PDF", "2️⃣ Fill Excel from JSON"])
 
@@ -384,6 +384,7 @@ with tab2:
             st.success(f"✅ Added Property — {filled} fields populated!")
             with open(out_xlsx, "rb") as f:
                 st.download_button("⬇️ Download Updated Excel", f, file_name="1004_updated.xlsx")
+
 
 
 
