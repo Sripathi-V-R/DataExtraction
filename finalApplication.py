@@ -11,8 +11,14 @@ from dotenv import load_dotenv
 from openai import OpenAI
 
 # ========== CONFIG ==========
+load_dotenv()
 
-OPENAI_API_KEY = st.secrets("OPENAI_API_KEY")
+# Try Streamlit secrets first, then fall back to .env file
+OPENAI_API_KEY = st.secrets.get("OPENAI_API_KEY") or os.getenv("OPENAI_API_KEY")
+
+if not OPENAI_API_KEY:
+    st.error("❌ OPENAI_API_KEY not found in Streamlit secrets or .env file")
+    st.stop()
 
 
 client = OpenAI(api_key=OPENAI_API_KEY)
@@ -378,6 +384,7 @@ with tab2:
             st.success(f"✅ Added Property — {filled} fields populated!")
             with open(out_xlsx, "rb") as f:
                 st.download_button("⬇️ Download Updated Excel", f, file_name="1004_updated.xlsx")
+
 
 
 
